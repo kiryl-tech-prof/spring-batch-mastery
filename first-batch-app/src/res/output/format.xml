@@ -1,0 +1,21 @@
+<!-- This file is not used by the code, it's provided for format demonstration purpose only -->
+<data>
+    <daily-data>
+        <date>03-11-2015</date>
+        <min>44.122222357222224</min>
+        <avg>52.333456433332244</avg>
+        <max>55.288888888888884</max>
+    </daily-data>
+    <daily-data>
+        <date>01-02-2017</date>
+        <min>22.655555555555555</min>
+        <avg>23.197222222222226</avg>
+        <max>23.672222222222224</max>
+    </daily-data>
+    <daily-data>
+        <date>11-03-2019</date>
+        <min>43.316666666666666</min>
+        <avg>43.836419753086417</avg>
+        <max>44.561111111111106</max>
+    </daily-data>
+</data>

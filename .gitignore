@@ -1,0 +1,5 @@
+.gradle/
+.idea/
+build/
+first-batch-app.iml
+.DS_Store
