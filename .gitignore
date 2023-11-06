@@ -1,5 +1,7 @@
 .gradle/
 .idea/
 build/
-first-batch-app.iml
+*.iml
 .DS_Store
+HTE2NP.xml
+HTE2NP-anomalies.csv
