@@ -120,7 +120,7 @@ The command will delete the old data first, and then generate the new one.
 
 Before running any of the jobs, the application needs to be built:
 ```shell
-gradle clean build
+gradle clean buildJar
 ```
 
 In order to run **Bank Transaction Analysis job**, use the following command:
