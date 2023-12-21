@@ -229,6 +229,7 @@ public class BankTransactionAnalysisConfiguration extends DefaultBatchConfigurat
                         // Take flag into account
                         .sql(BankTransaction.SELECT_ALL_QUERY + " where adjusted = false")
                         .rowMapper(BankTransaction.ROW_MAPPER)
+                        .saveState(false)
                         .build())
                 // Calculate the adjustment: multiply the amount to rate
                 .processor(item -> {
