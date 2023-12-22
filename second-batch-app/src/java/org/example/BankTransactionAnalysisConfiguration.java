@@ -78,7 +78,7 @@ public class BankTransactionAnalysisConfiguration extends DefaultBatchConfigurat
                                 @Qualifier("sourceDataSource") DataSource sourceDataSource) {
         FillBalanceProcessor processor = new FillBalanceProcessor();
         return new StepBuilder("fill-balance", jobRepository)
-                // Reading in chunks of size 10
+                // Writing in chunks of size 10
                 .<BankTransaction, BalanceUpdate>chunk(10, transactionManager)
                 // Reading from source db using cursor-based technique
                 .reader(new JdbcCursorItemReaderBuilder<BankTransaction>()
@@ -125,7 +125,7 @@ public class BankTransactionAnalysisConfiguration extends DefaultBatchConfigurat
                                                PlatformTransactionManager transactionManager,
                                                @Qualifier("merchantMonthAggregationReader") ItemReader<MerchantMonthBalance> merchantMonthAggregationReader) {
         return new StepBuilder("aggregate-by-merchant-monthly", jobRepository)
-                // Reading in chunks of size 10
+                // Writing in chunks of size 10
                 .<MerchantMonthBalance, MerchantMonthBalance>chunk(10, transactionManager)
                 // Supplying paging reader defined as a bean, opposing to instance, to work-around Spring Batch flaw;
                 // if not defined as a bean, NPE will be raised since some resources will not be initialized in
@@ -150,7 +150,7 @@ public class BankTransactionAnalysisConfiguration extends DefaultBatchConfigurat
                                    PlatformTransactionManager transactionManager,
                                    @Qualifier("dailyBalanceAggregationReader") ItemReader<DailyBalance> dailyBalanceAggregationReader) {
         return new StepBuilder("aggregate-by-day", jobRepository)
-                // Reading in chunks of size 10
+                // Writing in chunks of size 10
                 .<DailyBalance, DailyBalance>chunk(10, transactionManager)
                 // Supplying paging reader defined as a bean, opposing to instance, to work-around Spring Batch flaw;
                 // if not defined as a bean, NPE will be raised since some resources will not be initialized in
