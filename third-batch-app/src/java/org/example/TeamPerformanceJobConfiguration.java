@@ -163,9 +163,16 @@ public class TeamPerformanceJobConfiguration {
                         return StepExecutionListener.super.afterStep(stepExecution);
                     }
                 })
-//                .faultTolerant()  Skipping behavior could be enabled through fault-tolerant chaining
+//                .faultTolerant()  //Skipping behavior could be enabled through fault-tolerant chaining
 //                .skip(IndexOutOfBoundsException.class)
 //                .skipLimit(40)
+//                .listener(new SkipListener<Team, AverageScoredTeam>() {
+//                    @Override
+//                    public void onSkipInProcess(Team team, Throwable t) {
+//                        LOGGER.error("Error while processing team " + team.getName() + " , item is skipped");
+//                        LOGGER.error("Reason: " + t.getClass().getName() + " -> " + t.getLocalizedMessage());
+//                    }
+//                })
                 .build();
     }
 
