@@ -1,0 +1,51 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.0.5'
+	id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group 'org.example.spring.batch'
+version 'final'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation "org.springframework.batch:spring-batch-core:5.0.3"
+	implementation 'org.springframework.boot:spring-boot-starter' // Spring Boot Library (Web Application)
+    implementation 'org.springframework.boot:spring-boot-starter-web' // Spring Boot Library (Web Application)
+	implementation 'mysql:mysql-connector-java:8.0.31' // For MySQL connector
+	implementation 'org.postgresql:postgresql:42.6.0' // For Postgresql connector
+	implementation 'org.apache.httpcomponents:httpclient:4.5.14' // Http client to start remote workers over http
+}
+
+sourceSets {
+	main {
+		java {
+			srcDirs "src/java"
+		}
+		resources {
+			srcDirs "src/res"
+		}
+	}
+
+	test {
+		java {
+			srcDirs "src/test"
+		}
+
+	}
+}
+
+test {
+	useJUnitPlatform()
+}
+
+// Task to generate records in the input source db
+task generateData(type: JavaExec) {
+	mainClass = 'org.example.GenerateSourceDatabase'
+	classpath = sourceSets.main.runtimeClasspath
+}
+
+
