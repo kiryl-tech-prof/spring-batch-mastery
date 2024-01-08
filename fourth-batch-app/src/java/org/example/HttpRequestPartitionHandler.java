@@ -93,7 +93,7 @@ public class HttpRequestPartitionHandler extends AbstractPartitionHandler {
         // In case of failure, we set step execution's status to FAILED
         if (response.getStatusLine().getStatusCode() != 200) {
             ExitStatus exitStatus = ExitStatus.FAILED
-                    .addExitDescription("HTTP request to start worked did not finish successfully, so exiting");
+                    .addExitDescription("HTTP request to start worker did not finish successfully, so exiting");
             partitionStepExecution.setStatus(BatchStatus.FAILED);
             partitionStepExecution.setExitStatus(exitStatus);
             jobRepository.update(partitionStepExecution); // Persist!
